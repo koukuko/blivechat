@@ -208,6 +208,9 @@ export default {
       if (!this.config.showMember || !this.filterNewMemberMessage(data)) {
         return
       }
+      if (data.price < this.config.minGiftPrice) { // 丢人
+        return
+      }
       let message = {
         id: data.id,
         type: constants.MESSAGE_TYPE_MEMBER,
