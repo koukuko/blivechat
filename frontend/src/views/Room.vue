@@ -105,6 +105,8 @@ export default {
       cfg.minGiftPrice = toInt(cfg.minGiftPrice, chatConfig.DEFAULT_CONFIG.minGiftPrice)
       cfg.showDanmaku = toBool(cfg.showDanmaku)
       cfg.showGift = toBool(cfg.showGift)
+      cfg.showMember = toBool(cfg.showMember)
+      cfg.showSuperchat = toBool(cfg.showSuperchat)
       cfg.showGiftName = toBool(cfg.showGiftName)
       cfg.mergeSimilarDanmaku = toBool(cfg.mergeSimilarDanmaku)
       cfg.mergeGift = toBool(cfg.mergeGift)
@@ -203,7 +205,7 @@ export default {
       this.$refs.renderer.addMessage(message)
     },
     onAddMember(data) {
-      if (!this.config.showGift || !this.filterNewMemberMessage(data)) {
+      if (!this.config.showMember || !this.filterNewMemberMessage(data)) {
         return
       }
       let message = {
@@ -219,7 +221,7 @@ export default {
       this.$refs.renderer.addMessage(message)
     },
     onAddSuperChat(data) {
-      if (!this.config.showGift || !this.filterSuperChatMessage(data)) {
+      if (!this.config.showSuperChat || !this.filterSuperChatMessage(data)) {
         return
       }
       if (data.price < this.config.minGiftPrice) { // 丢人
