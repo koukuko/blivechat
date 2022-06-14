@@ -208,9 +208,19 @@ export default {
       if (!this.config.showMember || !this.filterNewMemberMessage(data)) {
         return
       }
-      if (data.price < this.config.minGiftPrice) { // 丢人
+      // data.privilegeType
+      let price = 138 
+      if (data.privilegeType === 3) {
+        price = 138
+      } else if (data.privilegeType === 2) {
+        price = 1998
+      } else if (data.privilegeType === 1) {
+        price = 19998
+      } 
+      if (price < this.config.minGiftPrice) { // 丢人
         return
       }
+      
       let message = {
         id: data.id,
         type: constants.MESSAGE_TYPE_MEMBER,
